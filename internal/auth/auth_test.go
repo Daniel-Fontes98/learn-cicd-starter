@@ -14,23 +14,23 @@ func TestGetAPIKey(t *testing.T) {
 	}{
 		// Test case 1: Valid authorization header
 		{
-			headers: http.Header{"Authorization": []string{"ApiKey my-api-key"}},
-			expected: "my-api-key",
-			expectErr: false,
+			headers:    http.Header{"Authorization": []string{"ApiKey my-api-key"}},
+			expected:   "my-api-key",
+			expectErr:  false,
 			errMessage: "",
 		},
 		// Test case 2: Missing authorization header
 		{
-			headers: http.Header{},
-			expected: "",
-			expectErr: true,
+			headers:    http.Header{},
+			expected:   "",
+			expectErr:  true,
 			errMessage: "no authorization header included",
 		},
 		// Test case 3: Malformed authorization header
 		{
-			headers: http.Header{"Authorization": []string{"Bearer my-api-key"}},
-			expected: "",
-			expectErr: true,
+			headers:    http.Header{"Authorization": []string{"Bearer my-api-key"}},
+			expected:   "",
+			expectErr:  true,
 			errMessage: "malformed authorization header",
 		},
 	}
