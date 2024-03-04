@@ -37,6 +37,12 @@ jobs:
       - name: Check formatting
         run: test -z $(go fmt ./...)
 
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Run gosec
+        run: gosec ./...
+
   ci:
     name: "Run CI"
     runs-on: ubuntu-latest
